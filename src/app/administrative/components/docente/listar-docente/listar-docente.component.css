@@ -1,0 +1,125 @@
+body{
+  font-family: 'Montserrat';
+  height: 100vh;
+  overflow: auto;
+  z-index: 1;
+  padding-bottom: 48px
+}
+
+.container {
+justify-content: center;
+align-items: center;
+align-content: center;
+margin-top: 48px;
+margin-bottom: 48px
+}
+
+.image-container {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 5px;
+  width: 35px;
+  height: 35px;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.image-container .bi-pencil-square,
+.image-container .bi-trash {
+  font-size: 1rem;
+  z-index: 0;
+}
+
+p-table th {
+
+  position: relative;
+  z-index: 2;
+}
+.search-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.flex {
+  display: flex;
+  justify-content: space-between;
+}
+.card{
+  background: #F8F9FA;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+:host ::ng-deep .p-input-icon-right .pi-search {
+  color: #EE2B7B;
+}
+
+:host ::ng-deep .buscador {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.p-field input {
+  width: 200px;
+}
+
+.btn-new-config {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.titulo {
+  width: 65%;
+  display: flex;
+  font-size: 14px;
+  margin-bottom: 0.5rem;
+  justify-content: flex-end;
+
+}
+
+@media screen and (max-width: 960px) {
+  .btn-new-config .btn {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .titulo {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    justify-content: center;
+  }
+}
+
+:host ::ng-deep .p-button {
+  background-color: #EE2B7B !important;
+  color: white !important;
+  border: none;
+
+}
+
+:host ::ng-deep .p-button:hover {
+  background-color: #D0115F !important;
+}
+
+.tabla-docente th, .tabla-docente td{
+text-align: center;
+
+}
+.icono{
+  margin-right: 10px;
+
+}
+.search-container{
+
+  align-items: center;
+  align-content: center;
+}
+

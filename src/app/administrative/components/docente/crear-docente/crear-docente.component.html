@@ -1,0 +1,104 @@
+<body>
+  <p-dialog [visible]="displayModal" [modal]="true" [style]="{width: '40vw'}" [closable]="false"
+    [dismissableMask]="true">
+    <h6 class="d-flex justify-content-center"><b>{{nombrePagina}}</b></h6>
+
+
+    <p-card>
+      <form [formGroup]="docenteForm" (ngSubmit)="crearDocente(docenteForm.value)">
+        <div class="p-fluid p-formgrid p-grid">
+          <div class="p-field p-col">
+            <label for="tipoIdentificacionDocente">Tipo Identificación</label>
+            <p-dropdown formControlName="tipoIdentificacionDocente" [options]="tiposDocumento" placeholder="Selecciona un tipo de documento">
+            </p-dropdown>
+            <small
+              *ngIf="docenteForm?.get('tipoIdentificacionDocente')?.invalid && docenteForm?.get('tipoIdentificacionDocente')?.touched"
+              class="p-error">Tipo de identificación del Docente es requerido.</small>
+          </div>
+          <br>
+          <div class="p-field p-col">
+            <label for="identificacionDocente">Identificación</label>
+            <input id="identificacionDocente" type="text" pInputText formControlName="identificacionDocente">
+            <small
+              *ngIf="docenteForm?.get('identificacionDocente')?.invalid && docenteForm?.get('identificacionDocente')?.touched"
+              class="p-error">Identificación del Docente es requerido.</small>
+          </div>
+          <br>
+          <div class="p-field p-col">
+            <label for="nombreDocente">Nombres</label>
+            <input id="nombreDocente" type="text" pInputText formControlName="nombreDocente">
+            <small *ngIf="docenteForm?.get('nombreDocente')?.invalid && docenteForm?.get('nombreDocente')?.touched"
+              class="p-error">Nombre del Docente es requerido.</small>
+          </div>
+          <br>
+          <div class="p-field p-col">
+            <label for="apellidoDocente">Apellidos</label>
+            <input id="apellidoDocente" type="text" pInputText formControlName="apellidoDocente">
+            <small *ngIf="docenteForm?.get('apellidoDocente')?.invalid && docenteForm?.get('apellidoDocente')?.touched"
+              class="p-error">Apellido del Docente es requerido.</small>
+          </div>
+          <br>
+          <div class="p-field p-col">
+            <label for="correoElectronicoDocente">Correo Electrónico</label>
+            <input id="correoElectronicoDocente" type="text" pInputText formControlName="correoElectronicoDocente">
+            <small
+              *ngIf="docenteForm?.get('correoElectronicoDocente')?.invalid && docenteForm?.get('correoElectronicoDocente')?.touched"
+              class="p-error">El Correo Electrónico debe ser valido.</small>
+          </div>
+          <br>
+          <div class="p-field p-col">
+            <label for="telefonoCelularDocente">Teléfono Celular</label>
+            <input id="telefonoCelularDocente" type="text" pInputText formControlName="telefonoCelularDocente">
+            <small
+              *ngIf="docenteForm?.get('telefonoCelularDocente')?.invalid && docenteForm?.get('telefonoCelularDocente')?.touched"
+              class="p-error">El campo es requerido, debe contener 10 numeros.</small>
+          </div>
+          <br>
+          <div class="p-field p-col">
+            <label for="numeroContratoDocente">Número Contrato</label>
+            <input id="numeroContratoDocente" type="text" pInputText formControlName="numeroContratoDocente">
+            <small
+              *ngIf="docenteForm?.get('numeroContratoDocente')?.invalid && docenteForm?.get('numeroContratoDocente')?.touched"
+              class="p-error">El número de contrato es requerido.</small>
+          </div>
+          <br>
+          <div class="p-field p-col">
+            <label for="ciudadResidenciaDocente">Ciudad Residencia</label>
+            <input id="ciudadResidenciaDocente" type="text" pInputText formControlName="ciudadResidenciaDocente">
+            <small
+              *ngIf="docenteForm?.get('ciudadResidenciaDocente')?.invalid && docenteForm?.get('ciudadResidenciaDocente')?.touched"
+              class="p-error">La ciudad de residencia es requerido.</small>
+          </div>
+          <br>
+          <div class="p-field p-col">
+            <label for="escalafonTecnicoDocente">Escalafón Técnico</label>
+            <p-dropdown formControlName="escalafonTecnicoDocente" [options]="escalafonTecnico" placeholder="Selecciona un escalafón Técnico">
+            </p-dropdown>
+            <small
+              *ngIf="docenteForm?.get('escalafonTecnicoDocente')?.invalid && docenteForm?.get('escalafonTecnicoDocente')?.touched"
+              class="p-error">Escalafón Técnico es requerido.</small>
+          </div>
+          <br>
+          <div class="p-field p-col">
+            <label for="escalafonExtensionDocente">Escalafón Técnico</label>
+            <p-dropdown formControlName="escalafonExtensionDocente" [options]="escalafonExtension" placeholder="Selecciona un escalafón Extensión">
+            </p-dropdown>
+            <small
+              *ngIf="docenteForm?.get('escalafonExtensionDocente')?.invalid && docenteForm?.get('escalafonExtensionDocente')?.touched"
+              class="p-error">Escalafón Extensión es requerido.</small>
+          </div>
+        </div>
+        <div>
+          <p-button type="submit" label="GUARDAR"></p-button>
+          <a routerLink="/listar-docente" (click)="closeModal.emit()">
+            <p-button class="ml-3" label="CERRAR"></p-button>
+          </a>
+        </div>
+      </form>
+    </p-card>
+  </p-dialog>
+
+
+  <p-toast position="top-right"></p-toast>
+
+</body>

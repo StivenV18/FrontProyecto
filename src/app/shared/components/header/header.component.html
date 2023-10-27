@@ -1,0 +1,49 @@
+<body>
+  <nav class="navbar dropdown navbar-expand-lg" >
+  <div class="container-fluid">
+    <li class="nav-item">
+      <a><img src="assets/img/logoCesdeRosa.png" width="120" alt="cesde-logo" class="logo" /></a>
+    </li>
+    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar"
+      aria-controls="offcanvasNavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+
+  <!-- Contenido que se muestra en pantallas grandes -->
+  <div class="desktop-only" >
+    <div class="logout">
+      <li>
+        <h6 class="nombre-usuario">{{ name }}</h6>
+      </li>
+      <a><img src="/assets/img/Rectangle 2.png"  alt="cesde-logo" class="foto" /></a>
+
+      <div class="icon-container">
+        <img class="icon-image" src="/assets/img/iconoIMG.png" alt="Imagen con Icono">
+        <i class="bi bi-box-arrow-in-right icon-logout" (click)="logOut()" title="Cerrar Sesión"></i>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contenido que se muestra en pantallas pequeñas -->
+  <div class="offcanvas offcanvas-end mobile-only" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+    <div class="offcanvas-header">
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <div class="navbar-text">{{ name }}</div>
+      <button class="btn btn-light" (click)="logOut()" title="Cerrar Sesión">Cerrar sesión</button>
+    </div>
+  </div>
+<!---->
+
+  <p-dialog header="Sesión" [(visible)]="displayBasic" [position]="position" [modal]="true">
+    <p style="text-align: center">
+      <i class="bi bi-info-circle" style="font-size: 20px; color: rgb(236, 186, 22); margin-right: 10px"></i>
+      La sesión ha expirado
+    </p>
+  </p-dialog>
+
+</nav>
+
+</body>

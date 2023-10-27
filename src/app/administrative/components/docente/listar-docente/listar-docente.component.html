@@ -1,0 +1,84 @@
+<p-toast position="top-right"></p-toast>
+<p-confirmDialog header="Eliminar docente" icon="pi pi-exclamation-triangle"
+  [breakpoints]="{'960px': '75vw', '640px': '100vw'}"></p-confirmDialog>
+
+<body>
+
+  <div class="container">
+    <div class="btn-new-config mt4 mb-3">
+      <h6 class="titulo"><b>{{titulo}}</b></h6>
+      <p-button type="button" (click)="displayModal = true">Agregar Docente</p-button>
+    </div>
+    <hr>
+    <br>
+    <div class="card">
+
+
+      <div class="tabla-docente">
+        <p-table #dt [value]="listaDocentes" [paginator]="true" [rows]="rowsPerPage" [scrollable]="true"
+          [showCurrentPageReport]="true" [tableStyle]="{ 'min-width': '50rem' }"
+          [globalFilterFields]="['identificacionDocente','nombreDocente','apellidoDocente', 'correoElectronicoDocente', 'numeroContratoDocente','escalafonTecnicoDocente']"
+          currentPageReportTemplate=" página  {first}  registros  {totalRecords}"
+          [rowsPerPageOptions]="[5, 10, 25, 50]">
+
+          <ng-template pTemplate="header">
+            <tr>
+
+              <th style="width:14%">Identificación</th>
+              <th style="width:14%">Nombres</th>
+              <th style="width:14%">apellidos</th>
+              <th style="width:14%">Correo Electronico</th>
+              <th style="width:14%">Nro Contrato</th>
+              <th style="width:14%">Escalafón Técnico</th>
+              <th style="width:14%">Acciones</th>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="body" let-item>
+            <tr>
+              <td>{{ item.identificacionDocente }}</td>
+              <td>{{ item.nombreDocente }}</td>
+              <td>{{ item.apellidoDocente}}</td>
+              <td>{{ item.correoElectronicoDocente}}</td>
+              <td>{{ item.numeroContratoDocente}}</td>
+              <td>{{ item.escalafonTecnicoDocente}}</td>
+              <td>
+                <div class="image-container">
+                  <img src="/assets/img/iconoIMG.png" alt="Imagen con Icono">
+                  <i class="bi bi-pencil-square" pTooltip="Editar" tooltipPosition="right"
+                    (click)="editarDocente(item.identificacionDocente)"></i>
+                </div>
+                <div class="image-container">
+                  <img src="/assets/img/iconoIMG.png" alt="Imagen con Icono eliminar">
+                  <i class="bi bi-trash" pTooltip="Eliminar" tooltipPosition="right"
+                    (click)="eliminarDocente(item.id, $event)"></i>
+                </div>
+              </td>
+            </tr>
+          </ng-template>
+
+          <ng-template pTemplate="paginatorleft">
+            <div class="p-field">
+              <input type="number" id="rows" placeholder="cantidad de registros" pInputText
+                (input)="cambiarRegistrosPorPagina($event)">
+            </div>
+          </ng-template>
+          <ng-template pTemplate="paginatorright">
+            <div class="search-container">
+              <span class="p-input-icon-right">
+                <i class="pi pi-search icono"></i>
+                <input #filterInput pInputText type="text" class="buscador" placeholder="Buscar"
+                  (input)="applyFilters(filterInput.value)" />
+              </span>
+            </div>
+          </ng-template>
+        </p-table>
+      </div>
+
+    </div>
+  </div>
+
+  <app-crear-docente *ngIf="displayModal" [docente]="docenteActual" (closeModal)="cerrarModal()"></app-crear-docente>
+
+
+</body>

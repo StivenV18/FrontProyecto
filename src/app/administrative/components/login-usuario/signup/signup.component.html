@@ -1,0 +1,31 @@
+<div class="outer">
+  <div class="container">
+      <div class="row">
+          <div class="offset-md-2 col-lg-5 col-md-7 offset-lg-4 offset-md-3">
+              <div class="panel border bg-white">
+                  <div class="panel-heading">
+                      <h3 class="pt-3 font-weight-bold">Sign Up</h3>
+                  </div>
+                  <div class="panel-body p-3">
+                      <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+
+                          <div class="form-group pt-3">
+                              <div class="input-field" [class.error]="signUpForm.controls['usuario'].dirty && signUpForm.hasError('required','usuario')"> <span class="fa fa-user p-2"></span> <input formControlName="usuario" type="text" placeholder="User Name"> </div>
+                          </div>
+                          <small *ngIf="signUpForm.controls['usuario'].dirty && signUpForm.hasError('required','usuario')" class="text-danger">*Username is required*</small>
+
+                          <div class="form-group pt-3">
+                              <div class="input-field" [class.error]="signUpForm.controls['contraseña'].dirty && signUpForm.hasError('required','contraseña')"> <span class="fa fa-lock px-2"></span> <input formControlName="contraseña" [type]="type" placeholder="Password"> <button (click)="hideShowPass()" type="button" class="bg-white text-muted"> <span class="fa {{eyeIcon}}"></span> </button>                                    </div>
+                          </div>
+                          <small *ngIf="signUpForm.controls['contraseña'].dirty && signUpForm.hasError('required','contraseña')" class="text-danger">*Password is required*</small>
+
+                          <button type="submit" class="btn btn-primary btn-block mt-4 w-100">Signup</button>
+                          <div class="text-center pt-4 text-muted">Already have an account? <a id="forgot" routerLink="/login" href="#">Login</a> </div>
+                      </form>
+                  </div>
+
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
